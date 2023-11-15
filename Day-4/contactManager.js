@@ -6,15 +6,16 @@ const contactManager = {
       name: name,
       phoneNumber: phoneNumber,
       email: email,
+      isHighlighted: false, // Add isHighlighted property
     };
 
     this.contacts.push(newContact);
-    displayContacts();
+    displayContacts(this.contacts);
   },
 
   deleteContact: function (index) {
     this.contacts.splice(index, 1);
-    displayContacts();
+    displayContacts(this.contacts);
   },
 };
 
@@ -29,13 +30,28 @@ function addContact() {
   document.getElementById('contactForm').reset();
 }
 
-function displayContacts() {
+function searchContacts() {
+  const searchTerm = document.getElementById('searchName').value.toLowerCase();
+  const filteredContacts = contactManager.contacts.map(contact => ({
+    ...contact,
+    isHighlighted: contact.name.toLowerCase().includes(searchTerm),
+  }));
+
+  displayContacts(filteredContacts);
+}
+
+function displayContacts(contacts) {
   const contactListContainer = document.getElementById('contactList');
   contactListContainer.innerHTML = '';
 
-  contactManager.contacts.forEach((contact, index) => {
+  contacts.forEach((contact, index) => {
     const contactElement = document.createElement('div');
     contactElement.classList.add('contact');
+    
+    // Add a class to highlight the searched contact
+    if (contact.isHighlighted) {
+      contactElement.classList.add('highlighted-contact');
+    }
 
     const infoElement = document.createElement('div');
     infoElement.innerHTML = `<strong>${contact.name}</strong> | ${contact.phoneNumber} | ${contact.email}`;
@@ -51,6 +67,3 @@ function displayContacts() {
     contactListContainer.appendChild(contactElement);
   });
 }
-
-// Initial display
-displayContacts();

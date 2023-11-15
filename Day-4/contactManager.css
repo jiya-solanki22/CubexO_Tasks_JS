@@ -71,3 +71,7 @@ button:hover {
   padding: 5px 10px;
   cursor: pointer;
 }
+
+.highlighted-contact {
+  background-color: #ffeaa7; /* Highlight color */
+}

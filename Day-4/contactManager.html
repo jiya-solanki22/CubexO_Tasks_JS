@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Manager</title>
+  <link rel="stylesheet" href="/CubexO_Tasks_JS/Day-4/contactManager.css">
+</head>
+<body>
+  <header>
+    <h1>Contact Manager</h1>
+  </header>
+  <main>
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="text" id="phoneNumber" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <button type="button" onclick="addContact()">Add Contact</button>
+    </form>
+
+    <div id="contactList">
+      <!-- Contacts will be displayed here -->
+    </div>
+  </main>
+
+  <script src="/CubexO_Tasks_JS/Day-4/contactManager.js">
+  </script>
+</body>
+</html>
